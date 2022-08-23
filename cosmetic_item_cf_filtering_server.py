@@ -20,6 +20,11 @@ item_to_replace_id = {original: idx for idx, original in enumerate(sorted(df.ite
 df['item_to_replace_id'] = df["item_id"].map(lambda x:item_to_replace_id[x])
 df['user_replace_id'] = df['user_id'].map(lambda x:user_to_replace_id[x])
 
+# 피부 정보들
+skin_type_dict = { "1": '건성' , "2" :'지성', "3":'중성', '4':'수분부족지성', "5":'복합성', "6":'극건성'}
+skin_info_dict = { "1":'민감성', "2" :'모공', "3":'탄력없음', "4":'칙칙함', '5':'트러블', "6":'건조함', "7":'주름'}
+
+
 # 필요한 칼럼만 뽑아서 result_df 에 저장
 result_df = df[['user_replace_id',"item_to_replace_id","user_rating","skin_type","skin_info","item_id","user_id","user_rating"]]
 ratings = result_df
@@ -71,8 +76,13 @@ def predict():
         data = request.json
         user_skin_type = data['skin_type']
         user_skin_info = data['skin_info']
+        print(user_skin_type,user_skin_type)
+
         item_name = data['item_name']
         recommend_data_nums = data['recommend_data_nums']
+        user_skin_type = skin_type_dict[user_skin_type]
+        user_skin_info = skin_info_dict[user_skin_info]
+        print(user_skin_type,user_skin_info)
         prediction = Item_based_filtering(df,user_skin_type,user_skin_info,item_name,recommend_data_nums)
         send_data = {"data": prediction}
         
