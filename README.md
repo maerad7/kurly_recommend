@@ -4,7 +4,7 @@
 - numpy
 - pandas
 - scikit-learn
-- tensorflow
+- tensorflow == 2.9.1
 - wandb
 
 # Comment
