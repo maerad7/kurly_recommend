@@ -15,7 +15,7 @@
 - Item_base_CF.ipynb 는 Item based collaborative filltering 예제 코드입니다.
 - all_df.csv 는 전체 데이터셋 입니다.
 - not_null_df.scv 는 학습에 사용할 데이터 셋 입니다.
-- last_dataset.csv 는 데이터 전처리를 끝난 데이터 셋 입니다. 
+- last_dataset.csv 는 데이터 전처리를 끝난 데이터 셋 입니다.( 딥러닝 에서만 )
 
 # 실행 필요 파일
 - cosmetic_item_cf_filtering_server.py, experiment_no_onehot_add_category_05.h5, not_null_df.scv
